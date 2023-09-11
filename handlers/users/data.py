@@ -1,5 +1,6 @@
 from dm.uz_dm import Uz_September
 
+
 async def UzWriteData(state):
     async with state.proxy() as date:
         data = date['Uz_DM']
@@ -7,6 +8,7 @@ async def UzWriteData(state):
         users = open(file='dm.txt', mode='a', encoding='UTF-8')
         users.write(f'{data} {time}\n')
         users.close()
+
 
 async def RuWriteData(state):
     async with state.proxy() as date:
@@ -17,6 +19,7 @@ async def RuWriteData(state):
         users = open(file='dm.txt', mode='a', encoding='UTF-8')
         users.write(f'{value} {time}\n')
         users.close()
+
 
 async def UzCheckData(state):
     async with state.proxy() as date:
@@ -31,6 +34,7 @@ async def UzCheckData(state):
             return False
         else:
             return True
+
 
 async def RuCheckData(state):
     async with state.proxy() as date:

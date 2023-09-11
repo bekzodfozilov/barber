@@ -6,3 +6,4 @@ from . import ruchecktime
 from . import uz
 from . import uzcheckday
 from . import uzchecktime
+from . import data

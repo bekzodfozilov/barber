@@ -2,7 +2,7 @@ import aiogram.utils.markdown as md
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ParseMode
-from handlers.data import UzWriteData, UzCheckData
+from handlers.users.data import UzWriteData, UzCheckData
 from handlers.users.uzchecktime import UzCheckTimeText
 from handlers.users.uzcheckday import UzCheckDay
 from keyboards.default.default import Uz_Contact_Button, Uz_Haircuts_Button, Uz_Yes_No_Button, Confirmed
