@@ -5,6 +5,7 @@ from database.config import *
 from states.states import Condition
 from keyboards.default.default import Admin_Button
 
+
 @UABarbershop.message_handler(commands=["start"], state="*")
 async def CMD_Start(message: types.Message):
     # if str(message.from_user.id) in ADMINS:
@@ -20,16 +21,20 @@ va biz Juma kuni ishlamaymiz.\n🇷🇺Здравствуйте, дорогие 
         await WriteUserID(message.from_user.id)
     await GetCount()
     await Condition.Language.set()
-    
+
+
 @UABarbershop.message_handler(commands=["users"], state="*")
 async def CMD_Users(message: types.Message):
-    await message.answer(f"🇺🇿Bot foydalanuvchilari soni: {await GetCount()} ta.\n🇷🇺Количество пользователей бота: {await GetCount()}.")
-    
+    await message.answer(
+        f"🇺🇿Bot foydalanuvchilari soni: {await GetCount()} ta.\n🇷🇺Количество пользователей бота: {await GetCount()}.")
+
+
 async def WriteUserID(users_id):
     users = open('barbershop.txt', mode='a')
     users.write(f'{users_id}\n')
     users.close()
-    
+
+
 async def CheckUsersID(users_id):
     users = open('barbershop.txt', mode='r')
     users_data = users.read().split('\n')
@@ -37,11 +42,13 @@ async def CheckUsersID(users_id):
         return True
     else:
         return False
-    
+
+
 async def GetCount():
     users = open('barbershop.txt', mode='r')
     count_users = users.read().split('\n')
     return len(count_users) - 1
+
 
 @UABarbershop.message_handler(commands=["help"], state="*")
 async def CMD_Help(message: types.Message):
@@ -77,6 +84,7 @@ async def CMD_Help(message: types.Message):
 /start - Запустить Телеграм бот заново;\n\
 /help - Инструкция по использованию Телеграм бота;\n\
 /language - Смена языка.", parse_mode="HTML")
+
 
 @UABarbershop.message_handler(lambda message: message.text not in ["O'zbek🇺🇿", "Русский🇷🇺"], state=Condition.Language)
 async def Incorrect_Language(message: types.Message):
